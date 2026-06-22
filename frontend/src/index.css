@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cyber-bg: #0B1020;
+  --color-cyber-card: #121A2E;
+  --color-cyber-primary: #00E5FF;
+  --color-cyber-secondary: #00FF88;
+  --color-cyber-accent: #7B61FF;
+  --color-cyber-danger: #FF4D6D;
+  --color-cyber-text: #E2E8F0;
+  --color-cyber-muted: #94A3B8;
+  
+  --shadow-cyan-glow: 0 0 15px rgba(0, 229, 255, 0.25);
+  --shadow-green-glow: 0 0 15px rgba(0, 255, 136, 0.25);
+  --shadow-purple-glow: 0 0 15px rgba(123, 97, 255, 0.25);
+  --shadow-red-glow: 0 0 15px rgba(255, 77, 109, 0.25);
+}
+
+@utility cyber-glass {
+  background: rgba(18, 26, 46, 0.7);
+  backdrop-filter: blur(14px) saturate(180%);
+  -webkit-backdrop-filter: blur(14px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+body {
+  background-color: var(--color-cyber-bg);
+  color: var(--color-cyber-text);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(123, 97, 255, 0.08) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(0, 229, 255, 0.08) 0px, transparent 50%),
+    radial-gradient(at 50% 100%, rgba(0, 255, 136, 0.05) 0px, transparent 50%),
+    linear-gradient(rgba(18, 26, 46, 0.4) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(18, 26, 46, 0.4) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+}
+
+/* Critical Threat Pulse */
+@keyframes threat-pulse-glow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 77, 109, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 77, 109, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 77, 109, 0);
+  }
+}
+
+.animate-threat-pulse {
+  animation: threat-pulse-glow 2s infinite;
+}
+
+/* Cyber Scanline Sweeper */
+@keyframes scanline-movement {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.cyber-scanner::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(to bottom, rgba(0, 229, 255, 0), rgba(0, 229, 255, 0.8), rgba(0, 229, 255, 0));
+  animation: scanline-movement 7s linear infinite;
+  pointer-events: none;
+}
+
+/* Scrollbar Customization */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0B1020;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #121A2E;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 229, 255, 0.15);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 229, 255, 0.35);
+}
